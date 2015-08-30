@@ -23,6 +23,16 @@ public class Client {
     this.client_phone = clientPhone;
   }
 
+  @Override
+  public boolean equals(Object otherClient) {
+    if(!(otherClient instanceof Client)) {
+      return false;
+    } else {
+      Client newClient = (Client) otherClient;
+      return (this.getClientName().equals(newClient.getClientName()) && this.getClientPhone().equals(newClient.getClientPhone()));
+    }
+  }
+
   public static List<Client> all() {
     String sql = "SELECT id, client_name, client_phone FROM clients";
     try(Connection con = DB.sql2o.open()) {

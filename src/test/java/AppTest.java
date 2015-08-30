@@ -20,8 +20,8 @@ public class AppTest extends FluentTest {
   public static ServerRule server = new ServerRule();
 
   @Rule
-  public DataBaseRule database = new DataBaseRule();
+  public DatabaseRule database = new DatabaseRule();
 
-  @Test
+  // @Test
   // firsttesthere!
 }

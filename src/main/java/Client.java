@@ -39,4 +39,14 @@ public class Client {
       return con.createQuery(sql).executeAndFetch(Client.class);
     }
   }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO clients (client_name, client_phone) VALUES (:client_name, :client_phone)";
+      con.createQuery(sql)
+        .addParameter("client_name", this.client_name)
+        .addParameter("client_phone", this.client_phone)
+        .executeUpdate();
+    }
+  }
 }

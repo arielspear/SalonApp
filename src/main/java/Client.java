@@ -3,24 +3,24 @@ import org.sql2o.*;
 
 public class Client {
   private int id;
-  private String clientName;
-  private String clientPhone;
+  private String client_name;
+  private String client_phone;
 
   public int getId() {
     return id;
   }
 
   public String getClientName() {
-    return clientName;
+    return client_name;
   }
 
   public String getClientPhone() {
-    return clientPhone;
+    return client_phone;
   }
 
   public Client(String clientName, String clientPhone) {
-    this.clientName = clientName;
-    this.clientPhone = clientPhone;
+    this.client_name = clientName;
+    this.client_phone = clientPhone;
   }
 
   public static List<Client> all() {

@@ -29,7 +29,9 @@ public class Client {
       return false;
     } else {
       Client newClient = (Client) otherClient;
-      return (this.getClientName().equals(newClient.getClientName()) && this.getClientPhone().equals(newClient.getClientPhone()));
+      return (this.getClientName().equals(newClient.getClientName()) &&
+        this.getClientPhone().equals(newClient.getClientPhone()) &&
+        this.getId() == newClient.getId());
     }
   }
 
@@ -43,10 +45,11 @@ public class Client {
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO clients (client_name, client_phone) VALUES (:client_name, :client_phone)";
-      con.createQuery(sql)
+      this.id = (int) con.createQuery(sql, true)
         .addParameter("client_name", this.client_name)
         .addParameter("client_phone", this.client_phone)
-        .executeUpdate();
+        .executeUpdate()
+        .getKey();
     }
   }
 }
